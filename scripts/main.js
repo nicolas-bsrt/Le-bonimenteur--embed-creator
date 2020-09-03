@@ -19,14 +19,14 @@ let htmlEmbed = {
         return `<div class="embedDescription">${string}</div>`
     },
     field: (field, n) => {
-        let gridStyle
-        if (!field.inline) gridStyle = 'style="grid-column: 1 / 13;"'
+        let gridStyle = 'style="grid-column: '
+        if (!field.inline) gridStyle += '1 / 13;"'
         else {
-            if (n === 1) gridStyle = 'style="grid-column: 1 / 5;"'
-            else if (n === 2) gridStyle = 'style="grid-column: 5 / 9;"'
-            else gridStyle = 'style="grid-column: 9 / 13;"'
+            if (n === 1) gridStyle = '1 / 5;"'
+            else if (n === 2) gridStyle = '5 / 9;"'
+            else gridStyle = '9 / 13;"'
         }
-        return `<div ${gridStyle}><div class="embedFieldName">${field.name}</div><div class="embedFieldValue">${markdown(field.value)}</div></div>`
+        return `<div ${gridStyle}><div class="embedFieldName">${getEmoji(field.name.trim())}</div><div class="embedFieldValue">${markdown(field.value)}</div></div>`
     }
 }
 
@@ -131,12 +131,9 @@ function textAnalysis () {
                 idsDataM = fstLine.match(/(?<!<#)\d{18}/g)
 
             if (!idsData || idsData.length() !== 2) return embedError('Il faut ')
-            if (!linkData) linkInput.value = `https://discord.com/channels/000000000000000000/${idsDataC}/${idsDataM}`
+            if (!linkData) linkInput.value = `${idsDataC}/${idsDataM}`
 
-//            if ()
 
-           // if ()
-            // https://discord.com/channels/477217029103812608/493763391588925440/750995168538263572
         }
         else {
             isEdit.checked = false
@@ -298,13 +295,12 @@ function textAnalysis () {
 }
 function updateEmbed () {
     let html = '', fields = ''
-    if (embed.title) html += htmlEmbed.title(embed.title)
+    if (embed.title) html += htmlEmbed.title(getEmoji(embed.title.trim()))
     if (embed.description && embed.description.trim()) html += htmlEmbed.description(markdown(embed.description))
 
     if (embed.fields[0]) {
         let n = 0
         for (let field of embed.fields) {
-            console.log(field.inline)
             if (field.inline) n++
             else n = 0
             fields += htmlEmbed.field(field, n%3)
@@ -313,80 +309,7 @@ function updateEmbed () {
     }
 
     Embed.innerHTML = html
-}
-function markdown (string) {
-    return string.trim()
-        .replace(/\*\*(\S{1}.*?\S|\S|.)\*\*/g, (x, content) => {
-                return `<strong>${content}</strong>`
-            })
-        .replace(/\*(\S{1}.*?\S|\S|.)\*/g, (x, content) => {
-                return `<em>${content}</em>`
-            })
-        .replace(/__(\S{1}.*?\S|\S|.)__/g, (x, content) => {
-            return `<u>${content}</u>`
-        })
-        .replace(/~~(\S{1}.*?\S|\S|.)~~/g, (x, content) => {
-            return `<s>${content}</s>`
-        })
-        .replace(/```(.+?)```/g, (x, content) => {
-            return `<pre><code class="full">${content}</code></pre>`
-        })
-        .replace(/`([^`]+?)`/g, (x, content) => {
-            return `<code class="inline">${content}</code>`
-        })
-        .replace(/(?:(?:https?):\/\/|www\.|ftp\.)(?:\([-A-Z0-9+&@#/%=~_|$?!:,.]*\)|[-A-Z0-9+&@#/%=~_|$?!:,.])*(?:\([-A-Z0-9+&@#/%=~_|$?!:,.]*\)|[A-Z0-9+&@#/%=~_|$])/gi, (x) => {
-            return `<a target="_blank" href="${x}" class="url">${x}</a>`
-        })
-        .replace(/(\\){0,1}<a{0,1}:(.+?):(\d{18})>/g,(x, escape, name, id) => {
-            if (escape && escape === '\\') return x.slice(1)
-
-            let emoji = client.emojis.resolve(id)
-            if (!emoji) return `:${name}:`
-            return `<img draggable="false" class="emoji" alt="${x}" src="${emoji.url}">`
-        })
-        .replace(/(\\){0,1}:\S*?:/g, (x, escape) => {
-                if (escape && escape === '\\') return x
-                return emojis[x] || x
-            })
-        .replace(/\*\* *?\*\*/g, '\u200b')
-
-/*        let users = result.match(/((?<=<@)|(?<=<@!))\d{18}(?=>)/g), mentions_u = [], user_cpt = -1
-        if (users && users[0]) for (let id of users) {
-            let user = await client.users.fetch(id).catch(() => {return false})
-            if (!user) mentions_u.push(`<@${id}>`)
-            else mentions_u.push(`<span class="mention">@${user.username}</span>`)
-        }
-        result = result.replace(/(\\){0,1}(<@!?\d{18}>)/g, (x, escape, user) => {
-            if (escape && escape === '\\') return user
-            user_cpt++
-            return mentions_u[user_cpt]
-        })
-
-        let roles = result.match(/(?<=<@&)\d{18}(?=>)/g), mentions_r = [], role_cpt = -1
-        if (roles && roles[0] && guild) for (let id of roles) {
-            let role = await guild.roles.fetch(id).catch(() => {return false})
-            if (!role) mentions_r.push(`<@&${id}>`)
-            else mentions_r.push(`<span style="color: ${role.hexColor}">@${role.name}</span>`)
-        }
-        result = result.replace(/(\\){0,1}(<@&\d{18}>)/g, (x, escape, role) => {
-            if (escape && escape === '\\') return role
-            role_cpt++
-            return mentions_r[role_cpt]
-        })
-
-        let channels = result.match(/((?<=<#)|(?<=<#!)).{18}(?=>)/g), mentions_c = [], channel_cpt = -1
-        if (channels && channels[0]) for (let id of channels) {
-            let channel = await client.channels.fetch(id)
-            if (!channel) mentions_c.push(`<#${id}>`)
-            else mentions_c.push(`<span class="mention">#${channel.name}</span>`)
-        }
-        result = result.replace(/(\\){0,1}(<#!?.{18}>)/g, (x, escape, channel) => {
-            if (escape && escape === '\\') return channel
-            channel_cpt++
-            return mentions_c[channel_cpt]
-        })
-
-        return result*/
+    twemoji.parse(Embed)
 }
 function embedError (err='') {
     Embed.innerHTML = `<div id="embedError"><h1>Erreur !</h1><p>${err}</p></div>`
