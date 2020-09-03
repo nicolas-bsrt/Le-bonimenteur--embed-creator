@@ -91,6 +91,7 @@ label {
 #editButton {
     transition: 0.7s;
     display: block;
+    margin: 0 3px;
 }
 #colorChoice, #copyButton, #editButton, #textResult, #editBlock {
     color: var(--text-color);
