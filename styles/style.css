@@ -1,0 +1,266 @@
+html {
+    --active-color: #1db954;
+    --text-color: #b9bbbe;
+    --text-gray: #7d8185;
+    --background: #36393f;
+    --background-color: #2f3136;
+    --border-color: #202225;
+
+
+    width: 100%;
+    background-color: var(--background);
+    color: white;
+    text-rendering: optimizeLegibility;
+}
+html, textarea, button, input {
+    font-family: Whitney, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 1rem;
+    line-height: 1rem;
+}
+input {
+    color: inherit;
+    background: none;
+    outline: none;
+    border: none;
+    box-shadow: none;
+    padding: unset;
+    margin: unset;
+}
+label {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#body {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 50px 0;
+    height: 700px;
+    box-sizing: border-box;
+}
+.brothers {
+    width: 650px;
+    height: 650px;
+    margin: 0 10px;
+}
+
+
+#topBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#colorAll {
+    cursor: pointer;
+    display: flex;
+}
+#colorChoice {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    padding: 5px;
+}
+#colorAll label {
+    cursor: pointer;
+}
+#color {
+    visibility: hidden;
+}
+#colorLabel {
+    margin: 0 1rem;
+}
+#colorCircle {
+    width: 1.4rem;
+    height: 1.4rem;
+    border-radius: 100%;
+}
+#copyButton, #editButton, #editBlock {
+    cursor: pointer;
+    border-radius: 20px;
+    padding: 5px 16px;
+    line-height: 1.4rem;
+    font-size: 1rem;
+
+}
+#copyButton {
+    transition: 1.2s;
+}
+#editButton {
+    transition: 0.7s;
+    display: block;
+}
+#colorChoice, #copyButton, #editButton, #textResult, #editBlock {
+    color: var(--text-color);
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+}
+#editButton:active {
+    background-color: var(--background);
+    box-shadow: var(--background) 0 0 10px;
+    transition: 0s;
+}
+#copyButton:active {
+    background-color: var(--active-color);
+    box-shadow: var(--active-color) 0 0 20px;
+    transition: 0s;
+}
+#editBlock {
+    margin-top: 10px;
+    cursor: unset;
+    display: flex;
+    overflow: hidden;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+}
+#editLabel {
+    color: var(--text-gray);
+    padding: 5px 0;
+    flex-shrink: 0;
+}
+#editInput {
+    padding: 5px 10px;
+    flex-grow: 1;
+}
+
+#textResult {
+    width: 100%;
+    height: 600px;
+    margin: 10px 0;
+    padding: 20px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    outline: none;
+    box-shadow: none;
+    resize: none;
+}
+
+
+
+
+/* Yes no */
+#colorCheck {
+    width: 1.4rem;
+    height: 1.4rem;
+
+}
+#isColor, #isEdit {
+    display: none;
+}
+#colorCheckLabel {
+    position: absolute;
+    top: 50%;
+    left:5px;
+    width: 1.4rem;
+    height: 1.4rem;
+    margin: 0;
+    background-color: var(--text-color);
+    transform: translateY(-50%);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.2s ease transform, 0.2s ease background-color, 0.2s ease box-shadow;
+    overflow: hidden;
+    z-index: 1;
+}
+#colorCheckLabel:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+    width: 70%;
+    height: 70%;
+    margin: 0 auto;
+    background-color: var(--background-color);
+    transform: translateY(-50%);
+    border-radius: 50%;
+}
+#colorCheckLabel:hover:before {
+    width: 55%;
+    height: 55%;
+}
+#colorCheckLabel:active {
+    transform: translateY(-50%) scale(0.9);
+}
+.tick_mark {
+    position: absolute;
+    top: -1%;
+    right: 0;
+    left: 0;
+    width: 60%;
+    height: 60%;
+    margin: 0 auto 0 14%;
+    transform: rotateZ(-40deg);
+}
+.tick_mark:before, .tick_mark:after {
+    content: "";
+    position: absolute;
+    background-color: #fff;
+    border-radius: 2%;
+    opacity: 0;
+    transition: 0.2s ease transform, 0.2s ease opacity;
+}
+.tick_mark:before {
+    border-radius: 20px;
+    left: 0;
+    bottom: 0;
+    width: 20%;
+    height: 45%;
+    transform: translateY(-68%)
+}
+.tick_mark:after {
+    border-radius: 20px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 20%;
+    transform: translateX(78%)
+}
+#isColor:checked + #colorCheckLabel {
+    background-color: var(--active-color);
+}
+#isColor:checked + #colorCheckLabel:before {
+    width: 0;
+    height: 0;
+}
+#isColor:checked + #colorCheckLabel .tick_mark:before, #isColor:checked + #colorCheckLabel .tick_mark:after {
+    transform: translate(0);
+    opacity: 1;
+}
+
+
+#charCount {
+    margin-top: -40px;
+    padding-right: 20px;
+    text-align: right;
+    color: var(--text-color);
+    font-size: 0.8rem;
+}
+#result {
+    margin: 0 0 12px;
+    padding: 5px 2rem;
+    line-height: 1.4rem;
+    font-size: 1.4rem;
+}
+#embed {
+    display: inline-block;
+    min-height: 54px;
+    min-width: 80px;
+}
+#embedError {
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin-top: 8px;
+    padding: 15px;
+    color: white;
+    width: 100%;
+    background: #f68686;
+}
+#embedError h1 {
+    margin: 0;
+    line-height: 2rem;
+    font-size: 2rem;
+}

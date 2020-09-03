@@ -1,0 +1,48 @@
+<!doctype html>
+
+
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Embed creator</title>
+        <link rel="icon" type="image/png" href="./ressources/message.png"/>
+      <!--  <link rel="stylesheet" type="text/css" href="./styles/fonts.css"/>-->
+        <link rel="stylesheet" type="text/css" href="./styles/style.css"/>
+        <link rel="stylesheet" type="text/css" href="./styles/message.css"/>
+    </head>
+
+
+    <div id="body">
+        <div id="text" class="brothers">
+            <div id="topBox">
+                <div id="colorAll">
+                    <div id="colorChoice">
+                        <div id="colorCheck">
+                            <input type="checkbox" id="isColor" onchange="colOrNot()">
+                            <label for="isColor" id="colorCheckLabel"><span class="tick_mark"></span></label>
+                        </div>
+                        <label for="isColor"></label>
+                        <label id="colorLabel" for="color">Couleur</label>
+                        <label id="colorCircle"><input type="color" id="color" onchange="colorChange()"></label>
+                    </div>
+                </div>
+                <div>
+                    <input type="checkbox" id="isEdit" onchange="editMessage ()">
+                    <label id="editButton" for="isEdit">Editer un message</label>
+                </div>
+                <button id="copyButton" onclick="copyThat ()">Copier la commande</button>
+            </div>
+            <div id="moreOption"></div>
+            <textarea id="textResult" maxlength="2000 disabled">!embed</textarea>
+            <div id="charCount">0/2000</div>
+        </div>
+        <div class="brothers">
+            <h1 id="result">Résultat</h1>
+            <div class="embed" id="embed"></div>
+        </div>
+    </div>
+
+
+    <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./script.js"></script>
+</html>
