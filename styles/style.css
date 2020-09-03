@@ -13,7 +13,7 @@ html {
     text-rendering: optimizeLegibility;
 }
 html, textarea, button, input {
-    font-family: Whitney, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-family: Roboto, Arial, sans-serif;
     font-size: 1rem;
     line-height: 1rem;
 }
@@ -136,6 +136,7 @@ label {
     outline: none;
     box-shadow: none;
     resize: none;
+    line-height: 1.3rem;
 }
 
 
