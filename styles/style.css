@@ -17,13 +17,7 @@ html, textarea, button, input {
     font-size: 1rem;
     line-height: 1.2rem;
 }
-@media (max-width: 1024px) {
-    #body {
-        flex-direction: column;
-        width: 670px;
-        margin: 0 auto;
-    }
-}
+
 input {
     color: inherit;
     background: none;
@@ -43,13 +37,12 @@ label {
 #body {
     display: flex;
     justify-content: space-evenly;
-    padding: 50px 0;
     box-sizing: border-box;
 }
 .brothers {
     width: 650px;
     height: 650px;
-    margin: 0 10px;
+    margin: 50px 10px 0;
 }
 
 
@@ -277,4 +270,20 @@ label {
     margin: 0;
     line-height: 2rem;
     font-size: 2rem;
+}
+
+@media (max-width: 1024px) {
+    #body {
+        flex-direction: column;
+        width: 90%;
+        margin: 0 auto;
+    }
+    #textResult {
+        height: 200px;
+        width: 100%;
+    }
+    .brothers {
+        height: unset;
+        width: 100%;
+    }
 }
