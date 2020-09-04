@@ -135,3 +135,9 @@ code.inline {
     white-space: pre-line;
     word-wrap: break-word;
 }
+.embedImage {
+    margin-top: 16px;
+    max-width: 300px;
+    max-height: 300px;
+    border-radius: 4px;
+}
