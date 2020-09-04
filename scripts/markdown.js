@@ -61,9 +61,15 @@ let replacements = {
 }
 
 function markdown (text) {
+    text = getLink(text)
     for (let r in replacements) text = text.replace(replacements[r].regex, replacements[r].rule)
     return text
 }
 function getEmoji (text) {
     return text.replace(replacements.emoji.regex, replacements.emoji.rule)
+}
+function getLink (text) {
+    return text.replace(/\[([^()]+?)]\((\S+?)\)/g, (content, name, link) => {
+        return `<a href="${link}" class="url">${name}</a>`
+    })
 }
