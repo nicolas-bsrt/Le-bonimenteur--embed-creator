@@ -36,13 +36,32 @@
             <div id="charCount">0/2000</div>
         </div>
         <div class="brothers">
-            <h1 id="result">Résultat</h1>
+            <h1 class="title">Résultat</h1>
             <div class="embed" id="embed"></div>
+            <div>
+                <h1 class="title">Aide</h1>
+                <p>La couleur et le titre se placent juste après le mot-clé "!embed", en sautant une ligne, vous écrivez la description.</p>
+                <p>Ensuite, pour faire des "parties", il faut commencer un paragraphe par <code class="inline">>></code>.
+                    <br>La première ligne de ce paragraphe sera son titre, les suivantes (jusqu'au prochains chevrons) formeront le "corp" de la partie.
+                </p>
+                <p>Si vous faites suivre les chevrons par le mot-clé <code class="inline">inline</code>, vos parties seront "en colone" et si c'est le mot clé <code class="inline">blank</code> que vous utilisez, c'est une partie vide qui sera insérée. Les deux mots-clés peuvent être combinés.</p>
+                <p><u>Exemple :</u></p>
+                <div id="example">!embed #12ccd6 Je suis un titre
+                    <br>Ici, c'est la description.
+                    <br>>> Là c'est un titre de partie
+                    <br>Et là le texte d'une partie...<br>Cette partie est suivie d'une partie vide.
+                    <br>>> blank
+                    <br>>> inline Ici, une partie "inline" (en colone)
+                    <br>Les parties "en colones" peuvent aussi être vides (mot-clé "blank").
+                    <br>>> inline En voilà une deuxième
+                    <br>>> Et une dernière partie pour finir.
+                </div>
+            </div>
         </div>
     </div>
-
     <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="./scripts/emojis.js"></script>
+    <script type="text/javascript" src="./scripts/inputAnalyser.js"></script>
     <script type="text/javascript" src="./scripts/markdown.js"></script>
     <script type="text/javascript" src="./scripts/main.js"></script>
 </html>
