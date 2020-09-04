@@ -32,6 +32,7 @@ label {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    text-align: center;
 }
 
 #body {
@@ -273,14 +274,14 @@ label {
 }
 
 @media (max-width: 1024px) {
-    html, textarea, button, input {
-        font-size: 1.2rem;
-        line-height: 1.4rem;
+    html, textarea, button, input, #textResult {
+        font-size: 1.1rem;
+        line-height: 1.3rem;
     }
     #body {
         flex-direction: column;
-        width: 90%;
-        margin: 0 auto;
+        width: 94%;
+        margin: 0 3%;
     }
     #textResult {
         height: 200px;
@@ -289,5 +290,6 @@ label {
     .brothers {
         height: unset;
         width: 100%;
+        margin: 20px 0 15px;
     }
 }
