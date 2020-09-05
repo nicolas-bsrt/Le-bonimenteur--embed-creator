@@ -139,6 +139,7 @@ label {
 }
 #example {
     padding: 10px 20px;
+    margin-bottom: 10px;
 }
 #textResult, #example {
     border-radius: 10px;
@@ -253,7 +254,6 @@ label {
     font-size: 1.4rem;
 }
 #embed {
-    display: inline-block;
     min-height: 54px;
     min-width: 80px;
     margin-bottom: 30px;
