@@ -1,26 +1,32 @@
 let replacements = {
     bold: {
-        regex: /\*\*(\S.*?\S|\S|.)\*\*/g,
+        regex: /\*\*(\S.+?\S|\S|.)\*\*/g,
         rule: (x, content) => {
             return `<strong>${content}</strong>`
         }
     },
     italic: {
-        regex: /\*(\S.*?\S|\S|.)\*/g,
+        regex: /\*(\S.+?\S|\S|.)\*/g,
         rule: (x, content) => {
             return `<em>${content}</em>`
         }
     },
     underline: {
-        regex: /__(\S.*?\S|\S|.)__/g,
+        regex: /__(.+?)__/g,
         rule: (x, content) => {
             return `<u>${content}</u>`
         }
     },
     strikethrough: {
-        regex: /~~(\S.*?\S|\S|.)~~/g,
+        regex: /~~(.+?)~~/g,
         rule: (x, content) => {
             return `<s>${content}</s>`
+        }
+    },
+    spoiler: {
+        regex: /\|\|(.+?)\|\|/g,
+        rule: (x, content) => {
+            return `<span class="spoilerHidden" onclick="spoilerReveal (this)"><span style="opacity: 0">${content}</span></span>`
         }
     },
     code: {
@@ -61,15 +67,18 @@ let replacements = {
 }
 
 function markdown (text) {
-    text = getLink(text)
     for (let r in replacements) text = text.replace(replacements[r].regex, replacements[r].rule)
-    return text
+    return getLink(text)
 }
 function getEmoji (text) {
     return text.replace(replacements.emoji.regex, replacements.emoji.rule)
 }
 function getLink (text) {
-    return text.replace(/\[([^()]+?)]\((\S+?)\)/g, (content, name, link) => {
+    return text.replace(/\[([^()]+?)]\(<a .+?>(.+?)<\/a>\)/g, (content, name, link) => {
         return `<a href="${link}" class="url">${name}</a>`
     })
+}
+function spoilerReveal (element) {
+    element.className = "spoiler"
+    element.firstChild.style.opacity = "1"
 }
