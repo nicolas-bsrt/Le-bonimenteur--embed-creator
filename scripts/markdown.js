@@ -1,51 +1,39 @@
 let replacements = {
+    quote: {
+        regex: /(?<=\n|^)>.+(?:(?:\n>).+)*\n?/g,
+        rule : (x) => `<div class="blockquoteContainer"><div class="blockquoteLine"></div><blockquote>${x.replace(/>/g, '')}</blockquote></div>`
+    },
     bold: {
         regex: /\*\*(\S.+?\S|\S|.)\*\*/g,
-        rule: (x, content) => {
-            return `<strong>${content}</strong>`
-        }
+        rule: (x, content) => `<strong>${content}</strong>`
     },
     italic: {
         regex: /\*(\S.+?\S|\S|.)\*/g,
-        rule: (x, content) => {
-            return `<em>${content}</em>`
-        }
+        rule: (x, content) => `<em>${content}</em>`
     },
     underline: {
         regex: /__(.+?)__/g,
-        rule: (x, content) => {
-            return `<u>${content}</u>`
-        }
+        rule: (x, content) => `<u>${content}</u>`
     },
     strikethrough: {
         regex: /~~(.+?)~~/g,
-        rule: (x, content) => {
-            return `<s>${content}</s>`
-        }
+        rule: (x, content) => `<s>${content}</s>`
     },
     spoiler: {
         regex: /\|\|(.+?)\|\|/g,
-        rule: (x, content) => {
-            return `<span class="spoilerHidden" onclick="spoilerReveal (this)"><span style="opacity: 0">${content}</span></span>`
-        }
+        rule: (x, content) => `<span class="spoilerHidden" onclick="spoilerReveal (this)"><span style="opacity: 0">${content}</span></span>`
     },
     code: {
         regex: /```(.+?)```/g,
-        rule: (x, content) => {
-            return `<pre><code class="full">${content}</code></pre>`
-        }
+        rule: (x, content) => `<pre><code class="full">${content}</code></pre>`
     },
     codeInline: {
         regex: /`([^`]+?)`/g,
-        rule: (x, content) => {
-            return `<code class="inline">${content}</code>`
-        }
+        rule: (x, content) => `<code class="inline">${content}</code>`
     },
     link: {
         regex: /(?:(?:https?):\/\/|www\.|ftp\.)(?:\([-A-Z0-9+&@#/%=~_|$?!:,.]*\)|[-A-Z0-9+&@#/%=~_|$?!:,.])*(?:\([-A-Z0-9+&@#/%=~_|$?!:,.]*\)|[A-Z0-9+&@#/%=~_|$])/gi,
-        rule: (x) => {
-            return `<a target="_blank" href="${x}" class="url">${x}</a>`
-        }
+        rule: (x) => `<a target="_blank" href="${x}" class="url">${x}</a>`
     },
     emoji: {
         regex: /(\\)?:\S*?:/g,
@@ -60,9 +48,7 @@ let replacements = {
     },
     mention: {
         regex: /(<@!?\d{18}>)|(@\S+)|(<#!?\d{18}>)|(#\S+)/g,
-        rule: (x) => {
-            return `<span class="mention">${x}</span>`
-        }
+        rule: (x) => `<span class="mention">${x}</span>`
     }
 }
 
