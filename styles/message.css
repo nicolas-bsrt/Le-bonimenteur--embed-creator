@@ -72,6 +72,19 @@ code.inline {
     color: #dcddde;
 }
 
+.blockquoteContainer {
+    display: flex;
+}
+.blockquoteLine {
+    background-color: #4f545c;
+    border-radius: 4px;
+    width: 4px;
+}
+blockquote {
+    margin: 0;
+    padding: 0 8px 0 12px;
+}
+
 .spoiler, .spoilerHidden {
     border-radius: 3px;
     transition: all .1s ease;
@@ -129,12 +142,6 @@ code.inline {
     white-space: pre-line;
     grid-column: 1/1;
 }
-.embedFooter {
-    font-size: 0.75rem;
-    line-height: 1rem;
-    font-weight: 500;
-    margin-top: 8px;
-}
 .embedFields {
     margin-top: 8px;
     display: grid;
@@ -162,6 +169,7 @@ code.inline {
     max-width: 300px;
     max-height: 300px;
     border-radius: 4px;
+    grid-column: 1/3;
 }
 .embedThumbnail {
     margin-top: 8px;
@@ -169,7 +177,15 @@ code.inline {
     border-radius: 4px;
     width: 80px;
     height: 80px;
+    object-fit: contain;
     grid-row: 1/8;
     grid-column: 2/2;
     justify-self: end;
+}
+.embedFooter {
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 500;
+    margin-top: 8px;
+    grid-column: 1/3;
 }
