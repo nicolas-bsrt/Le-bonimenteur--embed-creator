@@ -162,7 +162,7 @@ function updateText () {
         options = []
     for (let o in embed.options) {
         if (o === 'icon') continue
-        options.push(`${o}: ${embed.options[o]}`)
+        options.push(`${o}: ${embed.options[o].replace(',', '\\,')}`)
     }
 
 
