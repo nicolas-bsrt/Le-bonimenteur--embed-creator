@@ -18,7 +18,7 @@
                 <div id="colorAll">
                     <div id="colorChoice">
                         <div id="colorCheck">
-                            <input type="checkbox" id="isColor" onchange="colOrNot()">
+                            <input type="checkbox" id="isColor" onchange="colOrNot();updateText ()">
                             <label for="isColor" id="colorCheckLabel"><span class="tick_mark"></span></label>
                         </div>
                         <label for="isColor"></label>
@@ -30,42 +30,121 @@
                     <input type="checkbox" id="isEdit" onchange="editMessage ()">
                     <label id="editButton" for="isEdit">Editer un message</label>
                 </div>
-                <button id="copyButton" onclick="copyThat ()">Copier la commande</button>
+                <button id="copyButton" class="greenButton" onclick="copyThat ()">Copier la commande</button>
             </div>
-            <div id="moreOption"></div>
-            <textarea id="textResult" maxlength="2000 disabled">!embed</textarea>
+            <div id="editBlock" style="display: none">
+                <label id="editLabel" for="editInput">Lien du message à éditer : </label>
+                <input id="editInput" type="url" oninput="linkEdition ()">
+            </div>
+            <label for="textResult"></label>
+            <textarea id="textResult">!embed</textarea>
             <div id="charCount">0/2000</div>
         </div>
         <div class="brothers">
-            <h1 class="title">Résultat</h1>
-            <div class="embed" id="embed"></div>
             <div>
-                <h1 class="title">Aide</h1>
-                <p>La couleur et le titre se placent juste après le mot-clé "!embed", en sautant une ligne, vous écrivez la description.</p>
-                <p>Ensuite, pour faire des "parties", il faut commencer un paragraphe par <code class="inline">>></code>.
-                    <br>La première ligne de ce paragraphe sera son titre, les suivantes (jusqu'au prochains chevrons) formeront le "corp" de la partie.
-                </p>
-                <p>Si vous faites suivre les chevrons par le mot-clé
-                    <code class="inline">inline</code>, vos parties seront "en colone" et si c'est le mot clé
-                    <code class="inline">blank</code> que vous utilisez, c'est une partie vide qui sera insérée. Les deux mots-clés peuvent être combinés.
-                </p>
-                <p>Vous pouvez "cacher" des liens sous des bouts de texte en les écrivant sous cette forme : <code class="inline">[texte](lien)</code>.</p>
-                <p><u>Exemple :</u></p>
-                <div id="example">!embed #12ccd6 Je suis un titre
-                    <br>Ici, c'est la description.
-                    <br>>> Là c'est un titre de partie
-                    <br>Et là le texte d'une partie...
-                    <br>Le **markdown** *à la sauce* __Discord__ `est` ~~évidement~~ ||supporté|| !
-                    <br>```alert("Je suis un morceau de code")```
-                    <br>
-                    <br>Cette partie est suivie d'une partie vide.
-                    <br>>> blank
-                    <br>>> inline Ici, une partie "inline" (en colone)
-                    <br>Les parties "en colones" peuvent aussi être vides (mot-clé "blank").
-                    <br>>> inline En voilà une deuxième
-                    <br>Je suis le texte de la 2ème partie en colone. Il peut y en avoir autant que vous voulez mais discord ne les affichera que 3 par 3.
-                    <br>>> Et une dernière partie pour finir...
-                    <br>Avec un lien caché : [Google](https://www.google.fr/).
+                <h1 class="title" id="resultTitle" onclick="DisplayElement (this)">
+                    <svg class="categoryArrow" viewBox="6 8 12 8">
+                        <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M16.59 8.59004L12 13.17L7.41 8.59004L6 10L12 16L18 10L16.59 8.59004Z"></path>
+                    </svg>Résultat</h1>
+                <div class="toReduce">
+                    <div class="embed" id="embed"></div>
+                </div>
+            </div>
+            <div>
+                <h1 class="title" onclick="DisplayElement (this)">
+                    <svg class="categoryArrow categoryArrowClosed" viewBox="6 8 12 8">
+                        <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M16.59 8.59004L12 13.17L7.41 8.59004L6 10L12 16L18 10L16.59 8.59004Z"></path>
+                    </svg>Aide</h1>
+                <div class="toReduce" style="max-height: 0">
+                    <p>Le titre se place juste après le mot-clé "!embed", en sautant une ligne, vous écrivez la description.</p>
+                    <p>Ensuite, pour faire des parties, il faut commencer un paragraphe par deux chevrons (<code class="inline">>></code>).
+                        <br>La première ligne de ce paragraphe sera son titre, les suivantes (jusqu'au prochains chevrons) formeront le "corp" de la partie.
+                    </p>
+                    <p>Si vous faites suivre les chevrons par le mot-clé
+                        <code class="inline">inline</code>, vos parties seront "en colone" et si c'est le mot clé
+                        <code class="inline">blank</code> que vous utilisez, c'est une partie vide qui sera insérée. Les deux mots-clés peuvent être combinés.
+                    </p>
+                </div>
+            </div>
+            <div>
+                <h1 class="title" onclick="DisplayElement (this)">
+                    <svg class="categoryArrow categoryArrowClosed" viewBox="6 8 12 8">
+                        <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M16.59 8.59004L12 13.17L7.41 8.59004L6 10L12 16L18 10L16.59 8.59004Z"></path>
+                    </svg>Options
+                </h1>
+                <div class="toReduce" style="max-height: 0">
+                    <p>Vous pouvez définir quelques paramètres supplémentaires. Pour celà il faut les annoncer : <code class="inline">options:{}</code>. Puis mettre entre les accolades les couples nom:valeur des options que vous souhaitez (séparés par des virgules). Le résultat devrait ressembler à l'exemple suivant :</p>
+                    <pre><code class="full">options:{nom1: valeur2, nom2: valeur2}</code></pre>
+                    <ul>
+                        <li><strong>La couleur</strong> (color) : <code class="inline">color: #44ccee</code></li>
+                        <li><strong>Un lien</strong> (url) - il se cachera sous le titre (si c'est une invitation pour un serveur discord, une miniature à l'image du serveur s'ajoutera automatiquement) :<br><code class="inline">url: https://discord.gg/RKHwUsd</code></li>
+                        <li><strong>Une image</strong> (image) - en dessous du texte :<br><code class="inline">image: https://site.com/image.png</code></li>
+                        <li><strong>Une miniature</strong> (thumbnail) - petite image en haut à droite :<br><code class="inline">thumbnail: https://site.com/image.png</code></li>
+                        <li><strong>Un "bas de page"</strong> (footer) - texte plus discret tout en bas :<br><code class="inline">footer: petit texte plus discret.</code></li>
+                        <li><strong>Editer un message</strong> (edit) - éditer un message du bot :<br><code class="inline">edit: #salon messageId</code></li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <h1 class="title" onclick="DisplayElement (this)">
+                    <svg class="categoryArrow categoryArrowClosed" viewBox="6 8 12 8">
+                        <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M16.59 8.59004L12 13.17L7.41 8.59004L6 10L12 16L18 10L16.59 8.59004Z"></path>
+                    </svg>Le markdown
+                </h1>
+                <div class="toReduce" style="max-height: 0">
+                    <p>Le Markdown est un langage de balisage, il vous permettra de mettre en forme votre message (gras, italique, souligné...). Pour cela il faut utiliser une (ou plusieurs, pour combiner les styles) des balises suivantes :</p>
+                    <ul>
+                        <li><strong>Gras</strong> - deux astérisques de chaque côté : <code class="inline">**Gras**</code></li>
+                        <li><em>Italique</em> - un astérisque de chaque côté : <code class="inline">*Italique*</code></li>
+                        <li><u>Souligné</u> - deux tirets du bas (underscore) de chaque côté : <code class="inline">__Souligné__</code></li>
+                        <li><s>Rayé</s> - deux vagues de chaque côté : <code class="inline">~~Rayé~~</code></li>
+                        <li><span class="spoilerHidden" onclick="spoilerReveal (this)"><span style="opacity: 0">Spoiler</span></span> - deux barres de chaque côté : <code class="inline">||Spoiler||</code></li>
+                        <li><span class="url">Lien "caché"</span> - un texte entouré de crochet immédiatement suivit d'un lien entouré de parenthèses : <code class="inline">[texte cliquable](lien-caché)</code></li>
+                        <li><code class="inline">Code</code> : un accent grave de chaque côté - <code class="inline">`code`</code></li>
+                        <li><br></li>
+                        <li><pre><code class="full">Bloc de code</code></pre>Trois accents grave de chaque côté - <code class="inline">```Bloc de code```</code></li>
+                        <li><br></li>
+                        <li><div class="blockquoteContainer"><div class="blockquoteLine"></div><blockquote>Citation</blockquote></div>Un chevron (droit) avant le passage cité. : <code class="inline">> Citation</code></li>
+                    </ul>
+                    <p>Vous pourrez en apprendre un peu plus sur le markdown utilisé par Discord par <a class="url" href="https://gist.github.com/matthewzring/9f7bbfd102003963f9be7dbcf7d40e51">ici</a>.</p>
+                </div>
+            </div>
+            <div>
+                <h1 class="title" onclick="DisplayElement (this)">
+                    <svg class="categoryArrow categoryArrowClosed" viewBox="6 8 12 8">
+                        <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M16.59 8.59004L12 13.17L7.41 8.59004L6 10L12 16L18 10L16.59 8.59004Z"></path>
+                    </svg>Exemple</h1>
+                <div class="toReduce" style="max-height: 0">
+                    <div id="example">!embed Je suis un titre
+                        <br>Ici, c'est la description.
+                        <br>>> Là c'est un titre de partie
+                        <br>Et là le texte d'une partie...
+                        <br>Le **markdown** *à la sauce* __Discord__ `est` ~~évidement~~ ||supporté|| !
+                        <br>```alert("Je suis un morceau de code")```
+                        <br>> Et moi une citation !
+                        <br>Cette partie est suivie d'une partie vide.
+                        <br>>> blank
+                        <br>>> inline Ici, une partie "inline" (en colone)
+                        <br>Les parties "en colones" peuvent aussi être vides (mot-clé "blank").
+                        <br>>> inline En voilà une deuxième
+                        <br>Je suis le texte de la 2ème partie en colone. Il peut y en avoir autant que vous voulez mais discord ne les affichera que 3 par 3.
+                        <br>>> Et une dernière partie pour finir...
+                        <br>Avec un lien caché : [Google](https://www.google.fr/).
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h1 class="title" onclick="DisplayElement (this)">
+                    <svg class="categoryArrow categoryArrowClosed" viewBox="6 8 12 8">
+                        <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M16.59 8.59004L12 13.17L7.41 8.59004L6 10L12 16L18 10L16.59 8.59004Z"></path>
+                    </svg>Contact</h1>
+                <div class="toReduce" style="max-height: 0">
+                    <div>Vous cherchez à me joindre ? Vous avez des questions à poser ?<br>Vous pourrez me retrouver sur Discord :</div>
+                    <ul>
+                        <li><a class="url" href="https://discord.gg/RKHwUsd">Test area</a> - serveur de support du bot.</li>
+                        <li><a class="url" href="https://discord.gg/RKHwUsd">Artefact</a> - serveur porté sur le graphisme et les arts numériques.</li>
+                        <li>Ou, si c'est plus important, par mail : <a class="url" href="mailto:monsieur.zriox@gmail.com">monsieur.zriox@gmail.com</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
