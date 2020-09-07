@@ -1,4 +1,5 @@
 html {
+    --error-color: #f63d3d;
     --active-color: #1db954;
     --text-color: #b9bbbe;
     --text-gray: #7d8185;
@@ -33,6 +34,14 @@ label {
     -ms-user-select: none;
     user-select: none;
     text-align: center;
+}
+ul {
+    list-style: none;
+    line-height: 1.2rem;
+    padding-left: 25px;
+}
+li {
+    margin-bottom: 12px;
 }
 
 #body {
@@ -93,7 +102,7 @@ label {
     display: block;
     margin: 0 3px;
 }
-#colorChoice, #copyButton, #editButton, #textResult, #editBlock, #example {
+#colorChoice, .greenButton, .redButton, #editButton, #textResult, #editBlock, #example {
     color: var(--text-color);
     background-color: var(--background-color);
     border: 1px solid var(--border-color);
@@ -101,13 +110,19 @@ label {
 #editButton:active {
     background-color: var(--background);
     box-shadow: var(--background) 0 0 10px;
+}
+#copyButton:active, #editButton:active {
     transition: 0s;
 }
-#copyButton:active {
+.greenButton:active {
     background-color: var(--active-color);
     box-shadow: var(--active-color) 0 0 20px;
-    transition: 0s;
 }
+.redButton:active {
+    background-color: var(--error-color);
+    box-shadow: var(--error-color) 0 0 20px;
+}
+
 #editBlock {
     margin-top: 10px;
     cursor: unset;
@@ -248,14 +263,38 @@ label {
     font-size: 0.8rem;
 }
 .title {
-    margin: 0 0 12px;
+    position: relative;
+    cursor: pointer;
+    margin: 0 0 6px;
     padding: 5px 2rem;
     line-height: 1.4rem;
     font-size: 1.4rem;
 }
+.toReduce {
+    height: auto;
+    overflow: hidden;
+    transition: 0.4s;
+    color: var(--text-color);
+}
+.categoryArrow {
+    position: absolute;
+    left: 0.5rem;
+    top: 50%;
+    width: 0.8rem;
+    height: 0.8rem;
+
+    color: #8e9297;
+    transform: translate(0, -50%) rotate(0);
+    transition: transform 0.2s ease-out;
+}
+.categoryArrowClosed {
+    transform: translate(0, -50%) rotate(-90deg);
+    transition: transform 0.2s ease-out 0.3s;
+}
 #embed {
     min-height: 54px;
     min-width: 80px;
+    margin-top: 5px;
     margin-bottom: 30px;
 }
 #embedError {
@@ -265,7 +304,10 @@ label {
     padding: 15px;
     color: white;
     width: 100%;
-    background: #f68686;
+    background: var(--error-color);
+}
+.embedImage, .embedThumbnail {
+    color: red;
 }
 #embedError h1 {
     margin: 0;
