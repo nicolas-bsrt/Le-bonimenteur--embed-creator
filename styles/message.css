@@ -63,13 +63,12 @@ code.full {
 }
 code.inline {
     background-color: #202225;
-}
-code.inline {
     border-radius: 3px;
     font-size: 85%;
     padding: 0.2em;
     margin: -0.2em 0;
     color: #dcddde;
+    box-decoration-break: clone;
 }
 
 .blockquoteContainer {
