@@ -7,8 +7,10 @@
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <title>Embed creator</title>
         <link rel="icon" type="image/png" href="./ressources/message.png"/>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">         <link rel="stylesheet" type="text/css" href="./styles/style.css"/>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="./styles/style.css"/>
         <link rel="stylesheet" type="text/css" href="./styles/message.css"/>
+        <link rel="stylesheet" type="text/css" href="./styles/list.css"/>
     </head>
 
 
@@ -64,6 +66,9 @@
                         <code class="inline">inline</code>, vos parties seront "en colone" et si c'est le mot clé
                         <code class="inline">blank</code> que vous utilisez, c'est une partie vide qui sera insérée. Les deux mots-clés peuvent être combinés.
                     </p>
+                    <p>
+                        Pour une aide plus détaillée, rendez-vous <a class="url" href="./aide.html">ici</a>.
+                    </p>
                 </div>
             </div>
             <div>
@@ -89,33 +94,9 @@
                 <h1 class="title" onclick="DisplayElement (this)">
                     <svg class="categoryArrow categoryArrowClosed" viewBox="6 8 12 8">
                         <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M16.59 8.59004L12 13.17L7.41 8.59004L6 10L12 16L18 10L16.59 8.59004Z"></path>
-                    </svg>Le markdown
-                </h1>
-                <div class="toReduce" style="max-height: 0">
-                    <p>Le Markdown est un langage de balisage, il vous permettra de mettre en forme votre message (gras, italique, souligné...). Pour cela il faut utiliser une (ou plusieurs, pour combiner les styles) des balises suivantes :</p>
-                    <ul>
-                        <li><strong>Gras</strong> - deux astérisques de chaque côté : <code class="inline">**Gras**</code></li>
-                        <li><em>Italique</em> - un astérisque de chaque côté : <code class="inline">*Italique*</code></li>
-                        <li><u>Souligné</u> - deux tirets du bas (underscore) de chaque côté : <code class="inline">__Souligné__</code></li>
-                        <li><s>Rayé</s> - deux vagues de chaque côté : <code class="inline">~~Rayé~~</code></li>
-                        <li><span class="spoilerHidden" onclick="spoilerReveal (this)"><span style="opacity: 0">Spoiler</span></span> - deux barres de chaque côté : <code class="inline">||Spoiler||</code></li>
-                        <li><span class="url">Lien "caché"</span> - un texte entouré de crochet immédiatement suivit d'un lien entouré de parenthèses : <code class="inline">[texte cliquable](lien-caché)</code></li>
-                        <li><code class="inline">Code</code> : un accent grave de chaque côté - <code class="inline">`code`</code></li>
-                        <li><br></li>
-                        <li><pre><code class="full">Bloc de code</code></pre>Trois accents grave de chaque côté - <code class="inline">```Bloc de code```</code></li>
-                        <li><br></li>
-                        <li><div class="blockquoteContainer"><div class="blockquoteLine"></div><blockquote>Citation</blockquote></div>Un chevron (droit) avant le passage cité. : <code class="inline">> Citation</code></li>
-                    </ul>
-                    <p>Vous pourrez en apprendre un peu plus sur le markdown utilisé par Discord par <a class="url" href="https://gist.github.com/matthewzring/9f7bbfd102003963f9be7dbcf7d40e51">ici</a>.</p>
-                </div>
-            </div>
-            <div>
-                <h1 class="title" onclick="DisplayElement (this)">
-                    <svg class="categoryArrow categoryArrowClosed" viewBox="6 8 12 8">
-                        <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M16.59 8.59004L12 13.17L7.41 8.59004L6 10L12 16L18 10L16.59 8.59004Z"></path>
                     </svg>Exemple</h1>
                 <div class="toReduce" style="max-height: 0">
-                    <div id="example">!embed Je suis un titre
+                    <div id="example">Je suis un titre
                         <br>Ici, c'est la description.
                         <br>>> Là c'est un titre de partie
                         <br>Et là le texte d'une partie...
@@ -139,12 +120,15 @@
                         <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M16.59 8.59004L12 13.17L7.41 8.59004L6 10L12 16L18 10L16.59 8.59004Z"></path>
                     </svg>Contact</h1>
                 <div class="toReduce" style="max-height: 0">
-                    <div>Vous cherchez à me joindre ? Vous avez des questions à poser ?<br>Vous pourrez me retrouver sur Discord :</div>
+                    <p>
+                        Vous cherchez à me joindre ? Vous avez des questions à poser ?
+                        <br>Vous pourrez me retrouver sur Discord :
+                    </p>
                     <ul>
                         <li><a class="url" href="https://discord.gg/RKHwUsd">Test area</a> - serveur de support du bot.</li>
                         <li><a class="url" href="https://discord.gg/RKHwUsd">Artefact</a> - serveur porté sur le graphisme et les arts numériques.</li>
-                        <li>Ou, si c'est plus important, par mail : <a class="url" href="mailto:monsieur.zriox@gmail.com">monsieur.zriox@gmail.com</a></li>
                     </ul>
+                    <p>Ou, si c'est plus important, par mail : <a class="url" href="mailto:monsieur.zriox@gmail.com">monsieur.zriox@gmail.com</a></p>
                 </div>
             </div>
         </div>
@@ -153,5 +137,6 @@
     <script type="text/javascript" src="./scripts/emojis.js"></script>
     <script type="text/javascript" src="./scripts/inputAnalyser.js"></script>
     <script type="text/javascript" src="./scripts/markdown.js"></script>
+    <script type="text/javascript" src="./scripts/mechanisms.js"></script>
     <script type="text/javascript" src="./scripts/main.js"></script>
 </html>

@@ -1,0 +1,52 @@
+.toReduce {
+    height: auto;
+    overflow: hidden;
+    transition: 0.4s;
+    color: var(--text-color);
+}
+.toReduce > div {
+    margin-left: 2rem;
+}
+
+.categoryBlock {
+    border-radius: 6px;
+    padding: 6px 18px;
+}
+.categoryArrow {
+    position: absolute;
+    left: 0.5rem;
+    top: 50%;
+    width: 0.8rem;
+    height: 0.8rem;
+
+    color: #8e9297;
+    transform: translate(0, -50%) rotate(0);
+    transition: transform 0.2s ease-out;
+}
+.categoryArrowClosed {
+    transform: translate(0, -50%) rotate(-90deg);
+    transition: transform 0.2s ease-out 0.3s;
+}
+
+
+.title {
+    line-height: 1.4rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+.subTitle {
+    line-height: 1.2rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.title, .subTitle {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    position: relative;
+    cursor: pointer;
+    margin: 0;
+    padding: 7px 2rem;
+}

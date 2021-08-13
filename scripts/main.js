@@ -53,7 +53,6 @@ let htmlEmbed = {
 
 onEmbedLoad()
 function onEmbedLoad () {
-    getToReduceHeight ()
     if (Color.value === "#000000") Color.value = defaultColor
     textAnalysis ()
     twemoji.parse(Embed)
@@ -70,23 +69,6 @@ function copyThat () {
         textArea.selectionEnd = textArea.selectionStart
         textArea.blur()
     }
-}
-function DisplayElement (element) {
-    let toReduce = element.parentElement.getElementsByClassName('toReduce')[0],
-        arrow = element.getElementsByClassName('categoryArrow')[0]
-    if (toReduce.offsetHeight) {
-        toReduce.style.maxHeight = '0'
-        arrow.classList.add('categoryArrowClosed')
-    }
-    else {
-        toReduce.style.maxHeight =  `${toReduce.scrollHeight}px`
-        arrow.classList.remove('categoryArrowClosed')
-    }
-}
-function getToReduceHeight () {
-    let toReduce = document.getElementsByClassName('toReduce')
-    for (let element of toReduce)
-        if (!element.style.maxHeight) element.style.maxHeight = element.scrollHeight + 'px'
 }
 
 

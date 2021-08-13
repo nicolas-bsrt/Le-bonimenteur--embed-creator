@@ -77,7 +77,7 @@ function textAnalysis () {
             }
 
             if (tt.trim().length > 256) return embedError('Les titres des parties ne peuvent pas faire plus de 256 caractères.')
-            if (ct.trim().length > 1024) return embedError('Le contenu des parties ne peut pas faire plus de 256 caractères.')
+            if (ct.trim().length > 1024) return embedError('Le contenu des parties ne peut pas faire plus de 1024 caractères.')
 
             embed.fields.push({
                 name: (!tt || tt === "")?"\u200b":tt,

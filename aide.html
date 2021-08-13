@@ -1,0 +1,195 @@
+<!doctype html>
+
+
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Embed creator - aide détaillée</title>
+        <link rel="icon" type="image/png" href="./ressources/message.png"/>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="./styles/style.css"/>
+        <link rel="stylesheet" type="text/css" href="./styles/message.css"/>
+        <link rel="stylesheet" type="text/css" href="./styles/aide.css"/>
+        <link rel="stylesheet" type="text/css" href="./styles/list.css"/>
+    </head>
+
+    <div id="body">
+        <div class="brothers">
+            <div class="embed" id="embed" style="border-color: rgb(98, 205, 210);">
+                <div id="highlightColor-embed" onmouseenter="linkedHighlight (this)" onmouseleave="removeEffect (this)"></div>
+                <div class="embedTitle">
+                    <div class="linkedEmbedBlock" id="highlightTitle-embed" onmouseenter="linkedHighlight (this)" onmouseleave="removeEffect (this)">
+                        <a class="url" href="https://discord.gg/RKHwUsd">Lorem ipsum</a>
+                    </div>
+                </div>
+                <div class="linkedEmbedBlock" id="highlightDesc-embed" onmouseenter="linkedHighlight (this)" onmouseleave="removeEffect (this)">
+                    <div class="embedDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel dui mi. Nulla tempor leo sit amet maximus efficitur. Duis eu ultricies metus.</div>
+                </div>
+                <div class="linkedEmbedBlock" id="highlightFields-embed" onmouseenter="linkedHighlight (this)" onmouseleave="removeEffect (this)">
+                    <div class="embedFields">
+                        <div style="grid-column: 1 / 13;">
+                            <div class="embedFieldName">Nulla sagittis, urna vel elementum</div>
+                            <div class="embedFieldValue">orci dui semper dolor, eu auctor purus justo eu nulla. Vivamus viverra commodo purus sit amet malesuada. Nulla placerat, ligula et dignissim tempor.</div>
+                        </div>
+                        <div style="grid-column: 1 / 7;">
+                            <div class="embedFieldName">Nulla facilisi.</div>
+                            <div class="embedFieldValue">Sed sed dolor eget metus malesuada pharetra vel eu lectus.</div>
+                        </div>
+                        <div style="grid-column: 7 / 13;">
+                            <div class="embedFieldName">Pellentesque commodo iaculis</div>
+                            <div class="embedFieldValue">Curabitur nec massa sem.</div>
+                        </div>
+                        <div style="grid-column: 1 / 13;">
+                            <div class="embedFieldName">Etiam non est pretium, ac iaculis lorem dapibus sed.</div>
+                            <div class="embedFieldValue">Proin sodales nec quam eget interdum. Nunc tincidunt mollis fringilla. Etiam facilisis molestie massa, a mattis dui gravida et.</div>
+                        </div>
+                    </div>
+                </div>
+                <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/e/e8/TheGreatZebra.jpg"
+                        alt="image invalide"
+                        class="embedImage"
+                        id="highlightImg-embed"
+                        onmouseenter="linkedHighlight (this)"
+                        onmouseleave="removeEffect (this)"
+                >
+                <img
+                        src="https://cdn001.tintin.com/public/tintin/img/static/essentials-test/tintin-milou.png"
+                        alt="image invalide"
+                        class="embedThumbnail"
+                        id="highlightThb-embed"
+                        style="background-color: white"
+                        onmouseenter="linkedHighlight (this)"
+                        onmouseleave="removeEffect (this)"
+                >
+                <div class="embedFooter">
+                    <div class="linkedEmbedBlock" id="highlightFoot-embed" onmouseenter="linkedHighlight (this)" onmouseleave="removeEffect (this)">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="brothers">
+            <div class="categoryBlock">
+                <h1 class="title" onclick="DisplayElement (this)">
+                    <svg class="categoryArrow" viewBox="6 8 12 8">
+                        <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M16.59 8.59004L12 13.17L7.41 8.59004L6 10L12 16L18 10L16.59 8.59004Z"></path>
+                    </svg>Généralités</h1>
+                <div class="toReduce">
+                    <p>
+                        Pour créer un embed, il suffit d'écrire un message, puis de faire un clic droit dessus et dans le sous-menu <code class="inline">Applications</code>, choisir la commande <code class="inline">embed</code>. Si vous souhaitez personaliser ce message, vous pourrez ajouter à votre guise différents éléments, mais attention, la manière de les ajouter est importante !
+                        <br><br>Vous trouverez ces différents éléments dans les sections ci-dessous.
+                        <br>Vous pouvez créer et visualiser votre message en direct <a class="url" href="./index.html">ici</a>.
+                    </p>
+                </div>
+            </div>
+            <div class="categoryBlock" id="highlightTitle-aide" onmouseenter="linkedHighlight (this)" onmouseleave="removeEffect (this)">
+                <h1 class="title" onclick="DisplayElement (this)">
+                    <svg class="categoryArrow categoryArrowClosed" viewBox="6 8 12 8">
+                        <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M16.59 8.59004L12 13.17L7.41 8.59004L6 10L12 16L18 10L16.59 8.59004Z"></path>
+                    </svg>Le titre</h1>
+                <div class="toReduce" style="max-height: 0">
+                    <p>test</p>
+                </div>
+            </div>
+            <div class="categoryBlock" id="highlightDesc-aide" onmouseenter="linkedHighlight (this)" onmouseleave="removeEffect (this)">
+                <h1 class="title" onclick="DisplayElement (this)">
+                    <svg class="categoryArrow categoryArrowClosed" viewBox="6 8 12 8">
+                        <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M16.59 8.59004L12 13.17L7.41 8.59004L6 10L12 16L18 10L16.59 8.59004Z"></path>
+                    </svg>Le texte principal</h1>
+                <div class="toReduce" style="max-height: 0">
+                    <p>test</p>
+                </div>
+            </div>
+            <div class="categoryBlock" id="highlightFields-aide" onmouseenter="linkedHighlight (this)" onmouseleave="removeEffect (this)">
+                <h1 class="title" onclick="DisplayElement (this)">
+                    <svg class="categoryArrow categoryArrowClosed" viewBox="6 8 12 8">
+                        <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M16.59 8.59004L12 13.17L7.41 8.59004L6 10L12 16L18 10L16.59 8.59004Z"></path>
+                    </svg>Les sous-parties</h1>
+                <div class="toReduce" style="max-height: 0">
+                    <p>test</p>
+                </div>
+            </div>
+            <div class="categoryBlock">
+                <h1 class="title" onclick="DisplayElement (this)">
+                    <svg class="categoryArrow categoryArrowClosed" viewBox="6 8 12 8">
+                        <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M16.59 8.59004L12 13.17L7.41 8.59004L6 10L12 16L18 10L16.59 8.59004Z"></path>
+                    </svg>Les options</h1>
+                <div class="toReduce">
+                    <div class="categoryBlock" id="highlightColor-aide" onmouseenter="colorHighlight (this)" onmouseleave="colorHighlight (this)">
+                        <h3 class="subTitle" onclick="DisplayElement (this)">
+                            <svg class="categoryArrow categoryArrowClosed" viewBox="6 8 12 8">
+                                <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M16.59 8.59004L12 13.17L7.41 8.59004L6 10L12 16L18 10L16.59 8.59004Z"></path>
+                            </svg>La couleur</h3>
+                        <div class="toReduce" style="max-height: 0">
+                            <p>test</p>
+                        </div>
+                    </div>
+                    <div class="categoryBlock" id="highlightThb-aide" onmouseenter="linkedHighlight (this)" onmouseleave="removeEffect (this)">
+                        <h1 class="subTitle" onclick="DisplayElement (this)">
+                            <svg class="categoryArrow categoryArrowClosed" viewBox="6 8 12 8">
+                                <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M16.59 8.59004L12 13.17L7.41 8.59004L6 10L12 16L18 10L16.59 8.59004Z"></path>
+                            </svg>Le "timbre"</h1>
+                        <div class="toReduce" style="max-height: 0">
+                            <p>test</p>
+                        </div>
+                    </div>
+                    <div class="categoryBlock" id="highlightImg-aide" onmouseenter="linkedHighlight (this)" onmouseleave="removeEffect (this)">
+                        <h1 class="subTitle" onclick="DisplayElement (this)">
+                            <svg class="categoryArrow categoryArrowClosed" viewBox="6 8 12 8">
+                                <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M16.59 8.59004L12 13.17L7.41 8.59004L6 10L12 16L18 10L16.59 8.59004Z"></path>
+                            </svg>L'image</h1>
+                        <div class="toReduce" style="max-height: 0">
+                            <p>test</p>
+                        </div>
+                    </div>
+                    <div class="categoryBlock" id="highlightFoot-aide" onmouseenter="linkedHighlight (this)" onmouseleave="removeEffect (this)">
+                        <h1 class="subTitle" onclick="DisplayElement (this)">
+                            <svg class="categoryArrow categoryArrowClosed" viewBox="6 8 12 8">
+                                <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M16.59 8.59004L12 13.17L7.41 8.59004L6 10L12 16L18 10L16.59 8.59004Z"></path>
+                            </svg>Le "pied de message"</h1>
+                        <div class="toReduce" style="max-height: 0">
+                            <p>test</p>
+                        </div>
+                    </div>
+                    <div class="categoryBlock">
+                        <h1 class="subTitle" onclick="DisplayElement (this)">
+                            <svg class="categoryArrow categoryArrowClosed" viewBox="6 8 12 8">
+                                <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M16.59 8.59004L12 13.17L7.41 8.59004L6 10L12 16L18 10L16.59 8.59004Z"></path>
+                            </svg>Editer un message</h1>
+                        <div class="toReduce" style="max-height: 0">
+                            <p>test</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="categoryBlock">
+                <h1 class="title" onclick="DisplayElement (this)">
+                    <svg class="categoryArrow categoryArrowClosed" viewBox="6 8 12 8">
+                        <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M16.59 8.59004L12 13.17L7.41 8.59004L6 10L12 16L18 10L16.59 8.59004Z"></path>
+                    </svg>Le markdown
+                </h1>
+                <div class="toReduce" style="max-height: 0">
+                    <p>Le Markdown est un langage de balisage, il vous permettra de mettre en forme votre message (gras, italique, souligné...). Pour cela il faut utiliser une (ou plusieurs, pour combiner les styles) des balises suivantes :</p>
+                    <ul>
+                        <li><strong>Gras</strong> - deux astérisques de chaque côté : <code class="inline">**Gras**</code></li>
+                        <li><em>Italique</em> - un astérisque de chaque côté : <code class="inline">*Italique*</code></li>
+                        <li><u>Souligné</u> - deux tirets du bas (underscore) de chaque côté : <code class="inline">__Souligné__</code></li>
+                        <li><s>Rayé</s> - deux vagues de chaque côté : <code class="inline">~~Rayé~~</code></li>
+                        <li><span class="spoilerHidden" onclick="spoilerReveal (this)"><span style="opacity: 0">Spoiler</span></span> - deux barres de chaque côté : <code class="inline">||Spoiler||</code></li>
+                        <li><span class="url">Lien "caché"</span> - un texte entouré de crochet immédiatement suivit d'un lien entouré de parenthèses : <code class="inline">[texte cliquable](lien-caché)</code></li>
+                        <li><code class="inline">Code</code> : un accent grave de chaque côté - <code class="inline">`code`</code></li>
+                        <li><br></li>
+                        <li><pre><code class="full">Bloc de code</code></pre>Trois accents grave de chaque côté - <code class="inline">```Bloc de code```</code></li>
+                        <li><br></li>
+                        <li><div class="blockquoteContainer"><div class="blockquoteLine"></div><blockquote>Citation</blockquote></div>Un chevron (droit) avant le passage cité. : <code class="inline">> Citation</code></li>
+                    </ul>
+                    <p>Vous pourrez en apprendre un peu plus sur le markdown utilisé par Discord par <a class="url" href="https://gist.github.com/matthewzring/9f7bbfd102003963f9be7dbcf7d40e51">ici</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="./scripts/mechanisms.js"></script>
+    <script type="text/javascript" src="./scripts/highlight.js"></script>
+</html>
